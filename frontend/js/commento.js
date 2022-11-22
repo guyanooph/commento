@@ -294,9 +294,14 @@
     classAdd(logoutButton, "profile-button");
 
     name.innerText = commenter.name;
-    notificationSettingsButton.innerText = "Notification Settings";
-    profileEditButton.innerText = "Edit Profile";
-    logoutButton.innerText = "Logout";
+    // notificationSettingsButton.innerText = "Notification Settings";
+    // notificationSettingsButton.innerText = "通知设置";
+    notificationSettingsButton.innerText = "";
+    // profileEditButton.innerText = "Edit Profile";
+    // profileEditButton.innerText = "编辑资料";
+    profileEditButton.innerText = "";
+    // logoutButton.innerText = "Logout";
+    logoutButton.innerText = "登出";
 
     onclick(logoutButton, global.logout);
     onclick(notificationSettingsButton, notificationSettings, email.unsubscribeSecretHex);
@@ -496,16 +501,26 @@
 
     boldLeft.innerHTML = "<b>bold</b>";
     boldRight.innerHTML = "surround text with <pre>**two asterisks**</pre>";
-    italicsLeft.innerHTML = "<i>italics</i>";
-    italicsRight.innerHTML = "surround text with <pre>*asterisks*</pre>";
-    codeLeft.innerHTML = "<pre>code</pre>";
-    codeRight.innerHTML = "surround text with <pre>`backticks`</pre>";
-    strikethroughLeft.innerHTML = "<strike>strikethrough</strike>";
-    strikethroughRight.innerHTML = "surround text with <pre>~~two tilde characters~~</pre>";
-    hyperlinkLeft.innerHTML = "<a href=\"https://example.com\">hyperlink</a>";
-    hyperlinkRight.innerHTML = "<pre>[hyperlink](https://example.com)</pre> or just a bare URL";
-    quoteLeft.innerHTML = "<blockquote>quote</blockquote>";
-    quoteRight.innerHTML = "prefix with <pre>&gt;</pre>";
+    // italicsLeft.innerHTML = "<i>italics</i>";
+    italicsLeft.innerHTML = "<i>斜体</i>";
+    // italicsRight.innerHTML = "surround text with <pre>*asterisks*</pre>";
+    italicsRight.innerHTML = "使用 <pre>*星号*</pre> 环绕文本";
+    // codeLeft.innerHTML = "<pre>code</pre>";
+    codeLeft.innerHTML = "<pre>代码</pre>";
+    // codeRight.innerHTML = "surround text with <pre>`backticks`</pre>";
+    codeRight.innerHTML = "使用 <pre>`反引号`</pre> 环绕文本";
+    // strikethroughLeft.innerHTML = "<strike>strikethrough</strike>";
+    strikethroughLeft.innerHTML = "<strike>贯穿线</strike>";
+    // strikethroughRight.innerHTML = "surround text with <pre>~~two tilde characters~~</pre>";
+    strikethroughRight.innerHTML = "使用两个 <pre>~~两个波浪号~~</pre> 环绕文本";
+    // hyperlinkLeft.innerHTML = "<a href=\"https://example.com\">hyperlink</a>";
+    hyperlinkLeft.innerHTML = "<a href=\"https://example.com\">超链接</a>";
+    // hyperlinkRight.innerHTML = "<pre>[hyperlink](https://example.com)</pre> or just a bare URL";
+    hyperlinkRight.innerHTML = "<pre>[hyperlink](https://example.com)</pre> 或者直接写链接";
+    // quoteLeft.innerHTML = "<blockquote>quote</blockquote>";
+    quoteLeft.innerHTML = "<blockquote>引号</blockquote>";
+    // quoteRight.innerHTML = "prefix with <pre>&gt;</pre>";
+    quoteRight.innerHTML = "以 <pre>&gt;</pre> 开头";
 
     markdownButton = removeAllEventListeners(markdownButton);
     onclick(markdownButton, markdownHelpHide, id);
@@ -610,10 +625,16 @@
   }
 
 
+  // var sortPolicyNames = {
+  //   "score-desc": "Upvotes",
+  //   "creationdate-desc": "Newest",
+  //   "creationdate-asc": "Oldest",
+  // };
+
   var sortPolicyNames = {
-    "score-desc": "Upvotes",
-    "creationdate-desc": "Newest",
-    "creationdate-asc": "Oldest",
+    "score-desc": "点赞最多",
+    "creationdate-desc": "最新",
+    "creationdate-asc": "最早",
   };
 
 
@@ -762,7 +783,8 @@
 
       var message = "";
       if (resp.state === "unapproved") {
-        message = "Your comment is under moderation.";
+        // message = "Your comment is under moderation.";
+        message = "你的评论将被审查后展示";
       } else if (resp.state === "flagged") {
         message = "Your comment was flagged as spam and is under moderation.";
       }
@@ -856,28 +878,37 @@
     var elapsed = current - previous;
 
     if (elapsed < msJustNow) {
-      return "just now";
+      // return "just now";
+      return "刚刚";
     } else if (elapsed < msMinutesAgo) {
-      return Math.round(elapsed / msPerSecond) + " seconds ago";
+      // return Math.round(elapsed / msPerSecond) + " seconds ago";
+      return Math.round(elapsed / msPerSecond) + " 秒前";
     } else if (elapsed < msHoursAgo) {
-      return Math.round(elapsed / msPerMinute) + " minutes ago";
+      // return Math.round(elapsed / msPerMinute) + " minutes ago";
+      return Math.round(elapsed / msPerMinute) + " 分钟前";
     } else if (elapsed < msDaysAgo ) {
-      return Math.round(elapsed / msPerHour ) + " hours ago";
+      // return Math.round(elapsed / msPerHour ) + " hours ago";
+      return Math.round(elapsed / msPerHour ) + " 小时前";
     } else if (elapsed < msMonthsAgo) {
-      return Math.round(elapsed / msPerDay) + " days ago";
+      // return Math.round(elapsed / msPerDay) + " days ago";
+      return Math.round(elapsed / msPerDay) + " 天前";
     } else if (elapsed < msYearsAgo) {
-      return Math.round(elapsed / msPerMonth) + " months ago";
+      // return Math.round(elapsed / msPerMonth) + " months ago";
+      return Math.round(elapsed / msPerMonth) + " 月前";
     } else {
-      return Math.round(elapsed / msPerYear ) + " years ago";
+      // return Math.round(elapsed / msPerYear ) + " years ago";
+      return Math.round(elapsed / msPerYear ) + " 年前";
     }
   }
 
 
   function scorify(score) {
     if (score !== 1) {
-      return score + " points";
+      // return score + " points";
+      return score + " 赞";
     } else {
-      return score + " point";
+      // return score + " point";
+      return score + " 赞";
     }
   }
 
@@ -1329,7 +1360,8 @@
 
       var message = "";
       if (resp.state === "unapproved") {
-        message = "Your comment is under moderation.";
+        // message = "Your comment is under moderation.";
+        message = "你的评论将被审查后展示";
       } else if (resp.state === "flagged") {
         message = "Your comment was flagged as spam and is under moderation.";
       }
@@ -1651,11 +1683,17 @@
     classAdd(close, "login-box-close");
     classAdd(root, "root-min-height");
 
-    forgotLink.innerText = "Forgot your password?";
-    loginLink.innerText = "Don't have an account? Sign up.";
-    emailSubtitle.innerText = "Login with your email address";
-    emailButton.innerText = "Continue";
-    oauthSubtitle.innerText = "Proceed with social login";
+    // forgotLink.innerText = "Forgot your password?";
+    forgotLink.innerText = "忘记密码?";
+    // loginLink.innerText = "Don't have an account? Sign up.";
+    loginLink.innerText = "没有账号？注册。";
+    // emailSubtitle.innerText = "Login with your email address";
+    emailSubtitle.innerText = "使用你的邮箱登录";
+    // emailButton.innerText = "Continue";
+    emailButton.innerText = "下一步";
+    // oauthSubtitle.innerText = "Proceed with social login";
+    oauthSubtitle.innerText = "使用社交账号登录";
+    // ssoSubtitle.innerText = "Proceed with " + parent.location.host + " authentication";
     ssoSubtitle.innerText = "Proceed with " + parent.location.host + " authentication";
 
     onclick(emailButton, global.passwordAsk, id);

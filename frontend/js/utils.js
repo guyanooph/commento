@@ -95,31 +95,37 @@
     var interval = Math.floor(seconds / 31536000);
 
     if (interval > 1) {
-      return interval + " years ago";
+      // return interval + " years ago";
+      return interval + " 年前";
     }
 
     interval = Math.floor(seconds / 2592000);
     if (interval > 1) {
-      return interval + " months ago";
+      // return interval + " months ago";
+      return interval + " 月前";
     }
 
     interval = Math.floor(seconds / 86400);
     if (interval > 1) {
-      return interval + " days ago";
+      // return interval + " days ago";
+      return interval + " 天前";
     }
 
     interval = Math.floor(seconds / 3600);
     if (interval > 1) {
-      return interval + " hours ago";
+      // return interval + " hours ago";
+      return interval + " 小时前";
     }
 
     interval = Math.floor(seconds / 60);
     if (interval > 1) {
-      return interval + " minutes ago";
+      // return interval + " minutes ago";
+      return interval + " 分钟前";
     }
 
     if (seconds > 5) {
-      return Math.floor(seconds) + " seconds ago";
+      // return Math.floor(seconds) + " seconds ago";
+      return Math.floor(seconds) + " 秒前";
     } else {
       return "just now";
     }
