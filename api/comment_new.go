@@ -85,7 +85,8 @@ func commentNewHandler(w http.ResponseWriter, r *http.Request) {
 	var commenterHex, commenterName, commenterEmail, commenterLink string
 	var isModerator bool
 	if *x.CommenterToken == "anonymous" {
-		commenterHex, commenterName, commenterEmail, commenterLink = "anonymous", "Anonymous", "", ""
+		// commenterHex, commenterName, commenterEmail, commenterLink = "anonymous", "Anonymous", "", ""
+		commenterHex, commenterName, commenterEmail, commenterLink = "anonymous", "匿名", "", ""
 	} else {
 		c, err := commenterGetByCommenterToken(*x.CommenterToken)
 		if err != nil {

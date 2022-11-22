@@ -568,15 +568,18 @@
     classAdd(markdownButton, "markdown-button");
     classAdd(textareaSuperContainer, "button-margin");
 
-    attrSet(textarea, "placeholder", "Add a comment");
+    // attrSet(textarea, "placeholder", "Add a comment");
+    attrSet(textarea, "placeholder", "评论一下吧");
     attrSet(anonymousCheckbox, "type", "checkbox");
     attrSet(anonymousCheckboxLabel, "for", ID_ANONYMOUS_CHECKBOX + id);
 
-    anonymousCheckboxLabel.innerText = "Comment anonymously";
+    // anonymousCheckboxLabel.innerText = "Comment anonymously";
+    anonymousCheckboxLabel.innerText = "匿名评论";
     if (edit === true) {
       submitButton.innerText = "Save Changes";
     } else {
-      submitButton.innerText = "Add Comment";
+      //submitButton.innerText = "Add Comment";
+      submitButton.innerText = "添加评论";
     }
     markdownButton.innerHTML = "<b>M &#8595;</b> &nbsp; Markdown";
 

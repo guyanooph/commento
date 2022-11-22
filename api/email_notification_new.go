@@ -1,7 +1,5 @@
 package main
 
-import ()
-
 func emailNotificationModerator(d domain, path string, title string, commenterHex string, commentHex string, html string, state string) {
 	if d.EmailNotificationPolicy == "none" {
 		return
@@ -14,7 +12,8 @@ func emailNotificationModerator(d domain, path string, title string, commenterHe
 	var commenterName string
 	var commenterEmail string
 	if commenterHex == "anonymous" {
-		commenterName = "Anonymous"
+		// commenterName = "Anonymous"
+		commenterName = "匿名"
 	} else {
 		c, err := commenterGetByHex(commenterHex)
 		if err != nil {
@@ -110,7 +109,8 @@ func emailNotificationReply(d domain, path string, title string, commenterHex st
 
 	var commenterName string
 	if commenterHex == "anonymous" {
-		commenterName = "Anonymous"
+		// commenterName = "Anonymous"
+		commenterName = "匿名"
 	} else {
 		c, err := commenterGetByHex(commenterHex)
 		if err != nil {

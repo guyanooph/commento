@@ -54,7 +54,8 @@ func commentList(commenterHex string, domain string, path string, includeUnappro
 	defer rows.Close()
 
 	commenters := make(map[string]commenter)
-	commenters["anonymous"] = commenter{CommenterHex: "anonymous", Email: "undefined", Name: "Anonymous", Link: "undefined", Photo: "undefined", Provider: "undefined"}
+	// commenters["anonymous"] = commenter{CommenterHex: "anonymous", Email: "undefined", Name: "Anonymous", Link: "undefined", Photo: "undefined", Provider: "undefined"}
+	commenters["anonymous"] = commenter{CommenterHex: "anonymous", Email: "undefined", Name: "匿名", Link: "undefined", Photo: "undefined", Provider: "undefined"}
 
 	comments := []comment{}
 	for rows.Next() {
