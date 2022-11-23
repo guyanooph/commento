@@ -1905,7 +1905,8 @@
       order = ["name", "website", "password"];
       fid = [ID_LOGIN_BOX_NAME_INPUT, ID_LOGIN_BOX_WEBSITE_INPUT, ID_LOGIN_BOX_PASSWORD_INPUT];
       type = ["text", "text", "password"];
-      placeholder = ["Real Name", "Website (Optional)", "Password"];
+      // placeholder = ["Real Name", "Website (Optional)", "Password"];
+      placeholder = ["昵称", "网站 (可选)", "密码"];
     } else {
       order = ["password"];
       fid = [ID_LOGIN_BOX_PASSWORD_INPUT];
@@ -1914,9 +1915,11 @@
     }
 
     if (popupBoxType === "signup") {
-      subtitle.innerText = "Finish the rest of your profile to complete."
+      // subtitle.innerText = "Finish the rest of your profile to complete."
+      subtitle.innerText = "设置你的个人信息"
     } else {
-      subtitle.innerText = "Enter your password to log in."
+      // subtitle.innerText = "Enter your password to log in."
+      subtitle.innerText = "输入密码登录"
     }
 
     for (var i = 0; i < order.length; i++) {
